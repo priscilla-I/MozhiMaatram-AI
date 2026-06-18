@@ -1,0 +1,6 @@
+{
+  "name": "MozhiMaatram AI",
+  "description": "Intelligent Tamil Content Rephraser with Style Modes, Tanglish Conversion, Explainable AI, and Web Speech TTS",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
