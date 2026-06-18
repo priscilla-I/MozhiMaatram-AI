@@ -1,136 +1,126 @@
-# TamilAI Rephrase - Tamil Content Rephraser
+# MozhiMaatram AI - Intelligent Tamil Content Rephraser
 
-An intelligent, full-stack Tamil linguistic rephrasing and content optimization application. This system corrects Tamil spelling/grammar typos, converts Tanglish (mixed Roman script) into standard Tamil characters, adapts text into 7 style tones, calculates readability indices, and reads output with live Text-to-Speech (TTS).
+## About
 
----
+MozhiMaatram AI is an AI-powered Tamil content rephrasing application that intelligently rewrites Tamil text while preserving its original meaning. It improves grammar, sentence structure, and readability while supporting multiple writing styles.
 
-## 🏛️ Technology Stack
-- **Frontend**: React (Vite), TypeScript, Tailwind CSS, Lucide Icons, and Motion/React.
-- **Backend**: Express Server with Node.js & TypeScript, leveraging the Google GenAI SDK with the `gemini-3.5-flash` model.
-- **Microphone & Speech**: Web Speech API for real-time dictation (`ta-IN`) and native Tamil audio synthesis.
+## Features
 
----
+* Tamil content rephrasing
+* Grammar correction
+* Multiple writing modes
+* Tanglish conversion
+* Readability analysis
+* AI confidence score
+* Explainable AI
+* Voice input
+* Text-to-speech
+* Side-by-side comparison
+* Dark mode support
 
-## 🌟 Core Feature Specifications
-1. **Intelligent Tamil Rephrasing**: Fixes spelling, typography, grammatical and structural flaws.
-2. **Roman Script Translation (Tanglish)**: Detects and translates English-scripted Tamil (e.g., `"eppadi irukinga?"` ➔ `"எப்படி இருக்கிறீர்கள்?"`).
-3. **7 Styling Modes**: Toggle styling suited for:
-   - **Formal (முறையானது)**: Respectful administrative language.
-   - **Simple (எளிமையானது)**: Clear, accessible conversational Tamil.
-   - **Professional (தொழில்முறை)**: Polished business correspondence.
-   - **Academic (கல்வித்துறை)**: Lit-heavy syntax with rich scholarship vocab.
-   - **Creative (கற்பனைத்திறன்)**: Artistic, narrative and poetic descriptions.
-   - **Social Media (சமூக ஊடகம்)**: Friendly, casual, trend-optimized.
-   - **News Style (செய்தி ஊடகம்)**: Concise, direct, reporting structure.
-4. **Modulable Length**: Shorten, Expand or maintain Same-Size constraints.
-5. **Explainable AI (XAI)**: Displays a clear linguistic change log mapping spelling fixes, literary replacements, and sandhi rule applications.
-6. **AI Metrics Dashboard**: Tracks reading index levels (**Easy**, **Medium**, **Advanced**) alongside AI Confidence Scores.
-7. **Speech Synthesis & Recognition**: Real-time voice dictation matching `ta-IN` on entry and one-click playback audio output.
+## Technologies Used
 
----
+* HTML
+* CSS
+* TypeScript
+* TSX
+* JSON
+* npm
+* Vite
 
-## 🚀 Setup & Execution Guide (Integrated Node.js Full-Stack)
+## Project Structure
 
-Our repository features a unified, high-performance Node.js environment where Express serves as both the API server and the asset distributor.
-
-### 📋 Prerequisites
-- **Node.js**: v18.0 or higher
-- **Gemini API Key**: From Google AI Studio
-
-### 🛠️ Step-by-Step Installation
-1. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-2. Configure environment credentials in `.env` (or copy `.env.example`):
-   ```env
-   GEMINI_API_KEY="YOUR_ACTUAL_API_KEY_HERE"
-   ```
-
-3. Run the development server:
-   ```bash
-   npm run dev
-   ```
-   *The Express server boots your API routes at `/api/*` and mounts the Vite dev server at `http://localhost:3000` simultaneously.*
-
-4. Build and start in Production Mode:
-   ```bash
-   npm run build
-   npm run start
-   ```
-
----
-
-## 🐳 Optional Architecture: Python FastAPI Server Support
-
-If you prefer to decouple the backend into a **FastAPI** microservice, here are the setup rules:
-
-### Directory Concept:
-```
-tamilai-rephrase/
-├── backend/
-│   ├── app/
-│   │   ├── main.py
-│   │   └── services.py
-│   ├── .env
-│   └── requirements.txt
+```text
+mozhi-maatram-ai/
+├── .env.example            # Environment variables example template
+├── .gitignore              # Files to ignore in Git repository
+├── index.html              # Core HTML entry page
+├── metadata.json           # Application metadata and capabilities
+├── package.json            # Configuration and packages script
+├── server.ts               # Full-stack developer server & Gemini API proxy router
+├── tsconfig.json           # TypeScript compilation configurations
+├── vite.config.ts          # Vite build tool and development configurations
+└── src/                    # Frontend source files
+    ├── App.tsx             # Root React component
+    ├── main.tsx            # Main React client-side entry block
+    ├── index.css           # Global custom CSS rules and Tailwind CSS
+    ├── types.ts            # Common custom type declarations
+    └── components/         # Frontend React UI components
+        ├── Dashboard.tsx        # Shell view with form controls and audio recorders
+        ├── ComparisonView.tsx   # Left/Right visual box for text and TTS
+        └── Explanations.tsx     # Grammatical rules change explanations table
 ```
 
-### 1. Backend Python FastAPI Setup
-Create a Python virtual environment and install dependencies:
+## Setup & Execution Guide
+
+### Prerequisites
+
+* Node.js (v18 or higher)
+* npm
+
+### Installation
+
+Clone repository
+
 ```bash
-# Enter backend directory
-cd backend
-
-# Create Virtual Environment
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-
-# Install requirements
-pip install -r requirements.txt
+git clone <repository-url>
 ```
 
-Configure `.env` in `backend/`:
-```env
-GEMINI_API_KEY="YOUR_GEMINI_API_KEY"
-PORT=8000
-HOST=0.0.0.0
-```
+Open project
 
-Start the FastAPI microservice:
 ```bash
-uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+cd mozhi-maatram-ai
 ```
 
-### 2. Frontend React Client Configuration
-Redirect local fetch calls inside `src/components/Dashboard.tsx` from `/api/rephrase` to your FastAPI server:
-```typescript
-const response = await fetch("http://localhost:8000/api/rephrase", { ... });
+Install dependencies
+
+```bash
+npm install
 ```
 
----
+Run locally
 
-## 📈 Deployment & Production Hosting Guide
+```bash
+npm run dev
+```
 
-### Option A: Railway or Render (Full-Stack Express)
-Railway is ideal, as it reads the standard `package.json` configurations without any extra setups.
-1. Create a server project on [Railway](https://railway.app/).
-2. Connect your Git Repository.
-3. Define the Environment Variable: `GEMINI_API_KEY`.
-4. Railway will automatically notice the `"type": "module"` and trigger `npm run build` and `npm run start` correctly routing it through Cloudrun port bindings.
+Application URL:
 
-### Option B: Decoupled Deployments (Vercel Client + Render Backend)
-1. **Frontend (Vercel)**: Push to Vercel, pointing build settings as standard Vite SPA.
-2. **Backend (FastAPI on Render)**: Create a Web Service instance. Define your environment parameters, and secure CORS whitelist targets matching your live client domain name.
+```text
+http://localhost:3000
+```
 
-### Option C: Git Deployment (Staging)
-Secure configurations with clean standard Git commands:
+Build production version
+
+```bash
+npm run build
+```
+
+Preview production build
+
+```bash
+npm run start
+```
+
+## GitHub Setup
+
 ```bash
 git init
 git add .
-git commit -m "feat: complete TamilAI Content Rephraser"
-git remote add origin staging-github-url
+git commit -m "Initial commit"
 git branch -M main
+git remote add origin <repository-url>
 git push -u origin main
 ```
+
+## Future Enhancements
+
+* Offline support
+* PDF upload
+* Browser extension
+* Mobile application
+* Personalized suggestions
+
+## Conclusion
+
+MozhiMaatram AI is an intelligent Tamil digital writing assistant that improves grammar, readability, and sentence structure while preserving the original meaning of Tamil content.
